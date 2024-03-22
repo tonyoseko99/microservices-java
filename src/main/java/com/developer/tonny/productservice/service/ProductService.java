@@ -1,8 +1,14 @@
 package com.developer.tonny.productservice.service;
 
-import org.springframework.stereotype.Service;
+import com.developer.tonny.productservice.model.ProductCreateRequest;
+import com.developer.tonny.productservice.model.ProductCreateResponse;
 
-@Service
+import java.util.List;
+
 public interface ProductService {
+    ProductCreateResponse createProduct(ProductCreateRequest productCreateRequest);
 
+    List<ProductCreateResponse> findAll();
+
+    ProductCreateResponse findById(Integer productId);
 }
