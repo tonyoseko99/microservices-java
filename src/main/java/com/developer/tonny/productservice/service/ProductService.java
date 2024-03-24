@@ -11,4 +11,8 @@ public interface ProductService {
     List<ProductCreateResponse> findAll();
 
     ProductCreateResponse findById(Integer productId);
+
+    ProductCreateResponse updateProduct(Integer productId, ProductCreateRequest productCreateRequest);
+
+    void deleteProduct(Integer productId);
 }

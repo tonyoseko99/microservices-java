@@ -6,6 +6,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
+
 @Entity
 @Table(name = "tbl_products", uniqueConstraints = {
         @UniqueConstraint(columnNames = "product_code", name = "UNIQ_PRODUCT_CODE")
@@ -16,10 +18,17 @@ import lombok.NoArgsConstructor;
 @Builder
 public class Product {
     @Id
+    @Column(name = "product_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(nullable = false)
+
+    @Column(name = "product_name")
     private String name;
-    @Column(nullable = false)
-    private String product_code;
+
+    @Column(name = "product_price")
+    private BigDecimal price;
+
+    @Column(name = "product_code")
+    private String productCode;
+
 }

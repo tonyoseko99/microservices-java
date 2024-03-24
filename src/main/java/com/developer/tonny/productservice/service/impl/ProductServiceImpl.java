@@ -51,4 +51,23 @@ public class ProductServiceImpl implements ProductService {
 
         throw new ProductNotFoundException("Product with id not found");
     }
+
+    @Override
+    public ProductCreateResponse updateProduct(Integer productId, ProductCreateRequest productCreateRequest) {
+        var productToUpdate = productRepository.findById(productId);
+        if (productToUpdate.isPresent()){
+            var product = productToUpdate.get();
+            product.setName(productCreateRequest.getName());
+            product.setPrice(productCreateRequest.getPrice());
+            product.setProductCode(productCreateRequest.getProductCode());
+            var updatedProduct = productRepository.save(product);
+            return mapToProductCreateResponse(updatedProduct);
+        }
+        return null;
+    }
+
+    @Override
+    public void deleteProduct(Integer productId) {
+        productRepository.deleteById(productId);
+    }
 }
